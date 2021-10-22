@@ -4,4 +4,4 @@
 
 [![Actions Status](https://github.com/ruslanmust/frontend-project-lvl2/workflows/hexlet-check/badge.svg)](https://github.com/ruslanmust/frontend-project-lvl2/actions)
 
-[![GenDiff CI](https://github.com/ruslanmust/frontend-project-lvl2/actions/workflows/nodejs.yml/badge.svg)](https://github.com/ruslanmust/frontend-project-lvl2/actions)
+[![GenDiff CI](https://github.com/ruslanmust/frontend-project-lvl2/actions/workflows/my_actions.yml/badge.svg)](https://github.com/ruslanmust/frontend-project-lvl2/actions)
