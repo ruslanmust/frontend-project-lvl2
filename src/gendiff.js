@@ -1,12 +1,27 @@
-// import { Command } from 'commander/esm.mjs';
+import fs from 'fs';
 
-// const program = new Command();
+export default (filepath1, filepath2) => {
+  const file1 = JSON.parse(fs.readFileSync(filepath1, { encoding: 'utf8', flag: 'r' }));
+  const file2 = JSON.parse(fs.readFileSync(filepath2, { encoding: 'utf8', flag: 'r' }));
 
-// export default program
-//   .version('1.0.0')
-//   .description('Compares two configuration files and shows a difference.');
-// program.parse(process.argv);
+  const keysFile1 = Object.keys(file1);
+  const keysFile2 = Object.keys(file2);
 
-//   const options = program.opts();
-//   if (options.debug) console.log(options);
-//   console.log('pizza details:');
+  const commonKeys = keysFile1.concat(keysFile2.filter((key) => !keysFile1.includes(key))).sort();
+
+  const cb = (acc, item) => {
+    if (file1[item] === file2[item]) {
+      acc[`  ${item}`] = file1[item];
+    }
+    if (file1[item] !== file2[item]) {
+      acc[`- ${item}`] = file1[item];
+      acc[`+ ${item}`] = file2[item];
+    }
+    return acc;
+  };
+
+  const compareItems = commonKeys.reduce(cb, {});
+  const str = JSON.stringify(compareItems, null, 2);
+
+  console.log(str.replace(/['"]+/g, ''));
+};
