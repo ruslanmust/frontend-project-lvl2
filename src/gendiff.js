@@ -21,7 +21,7 @@ export default (filepath1, filepath2) => {
   };
 
   const compareItems = commonKeys.reduce(cb, {});
-  const str = JSON.stringify(compareItems, null, 2);
+  const result = JSON.stringify(compareItems, null, 2).replace(/['"]+/g, '');
 
-  console.log(str.replace(/['"]+/g, ''));
+  return result;
 };
