@@ -6,6 +6,8 @@ import compare from '../src/gendiff.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
+console.log(__filename);
+console.log(__dirname);
 
 const getFixturePath = (filename) => path.join(__dirname, '..', '__fixtures__', filename);
 
@@ -15,6 +17,6 @@ const readFile = (file) => {
 };
 
 test('compare', () => {
-  expect(compare(getFixturePath('file1.JSON'),
-    getFixturePath('file2.JSON'))).toMatch(readFile('expected_file.json'));
+  expect(compare(getFixturePath('file1.json'),
+    getFixturePath('file2.json'))).toMatch(readFile('expected_file.json'));
 });
