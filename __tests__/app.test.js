@@ -6,8 +6,6 @@ import compare from '../src/gendiff.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
-console.log(__filename);
-console.log(__dirname);
 
 const getFixturePath = (filename) => path.join(__dirname, '..', '__fixtures__', filename);
 
