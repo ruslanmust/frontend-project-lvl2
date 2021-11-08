@@ -30,6 +30,7 @@
   },
   "dependencies": {
     "commander": "^8.2.0",
-    "lodash": "^4.17.21"
+    "lodash": "^4.17.21",
+    "yaml": "2.0.0-8"
   }
 }

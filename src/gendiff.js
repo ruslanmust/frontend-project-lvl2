@@ -1,8 +1,20 @@
-import fs from 'fs';
+import path from 'path';
+import { parseJSON, parseYAML } from './parsers.js';
+
+const defineExt = (file) => {
+  const yamlExts = ['.yaml', '.yml'];
+  if (path.extname(file) === '.json') {
+    return parseJSON(file);
+  }
+  if (yamlExts.includes(path.extname(file))) {
+    return parseYAML(file);
+  }
+  throw new Error('Incorrect file extention');
+};
 
 export default (filepath1, filepath2) => {
-  const file1 = JSON.parse(fs.readFileSync(filepath1, { encoding: 'utf8', flag: 'r' }));
-  const file2 = JSON.parse(fs.readFileSync(filepath2, { encoding: 'utf8', flag: 'r' }));
+  const file1 = defineExt(filepath1);
+  const file2 = defineExt(filepath2);
 
   const keysFile1 = Object.keys(file1);
   const keysFile2 = Object.keys(file2);
