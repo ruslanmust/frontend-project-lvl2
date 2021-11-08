@@ -6,5 +6,8 @@
 
 [![GenDiff CI](https://github.com/ruslanmust/frontend-project-lvl2/actions/workflows/my_actions.yml/badge.svg)](https://github.com/ruslanmust/frontend-project-lvl2/actions)
 
-[Вычислитель отличий](https://asciinema.org/a/FnldQwDEXqnlOIRBJbR5CSiLZ) 
+[Вычислитель отличий JSON](https://asciinema.org/a/FnldQwDEXqnlOIRBJbR5CSiLZ) 
 >CLI command <span style = "color: #9555F9">**gendiff <file1.json> <file2.json>**<span>
+
+[Вычислитель отличий JSON & YAML](https://asciinema.org/a/NmojJEFpWBs94WZcURj4MucZI)
+>CLI command <span style = "color: #9555F9">**gendiff <file1.yaml> <file2.yml>**<span>
