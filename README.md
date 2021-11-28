@@ -11,3 +11,6 @@
 
 [Вычислитель отличий JSON & YAML](https://asciinema.org/a/NmojJEFpWBs94WZcURj4MucZI)
 >CLI command <span style = "color: #9555F9">**gendiff <file1.yaml> <file2.yml>**<span>
+
+[Вычислитель отличий вложенных структур](https://asciinema.org/a/cXlm2THvwgnp2ALYkypagMKO2)
+>>CLI command <span style = "color: #9555F9">**gendiff <file1.json> <file2.json>**<span>
