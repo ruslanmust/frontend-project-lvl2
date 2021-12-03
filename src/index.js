@@ -7,7 +7,7 @@ import tree from './tree.js';
 const extractFormat = (filename) => path.extname(filename);
 const readFile = (filename) => fs.readFileSync(filename, { encoding: 'utf8', flag: 'r' });
 
-const compare = (filepath1, filepath2, formatName = 'stylish') => {
+const compare = (filepath1, filepath2, formatName = 'nested') => {
   const file1extention = extractFormat(filepath1);
   const file2extention = extractFormat(filepath2);
   const file1Read = readFile(filepath1);
