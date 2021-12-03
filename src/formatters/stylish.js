@@ -20,20 +20,20 @@ const stringify = (data, treeDepth) => {
 
 const stylish = (innerTree) => {
   const iter = (tree, depth) => tree.map((node) => {
-    const getValue = (value, sign) => `${indent(depth)}${sign} ${node.key}: ${stringify(value, depth)}\n`;
+    const styleString = (value, sign) => `${indent(depth)}${sign} ${node.key}: ${stringify(value, depth)}\n`;
     switch (node.type) {
-      case '+':
-        return getValue(node.val, '+');
-      case '-':
-        return getValue(node.val, '-');
+      case 'added':
+        return styleString(node.val, '+');
+      case 'deleted':
+        return styleString(node.val, '-');
       case 'exist':
-        return getValue(node.val, ' ');
+        return styleString(node.val, ' ');
       case 'new':
-        return `${getValue(node.val1, '-')}${getValue(node.val2, '+')}`;
-      case 'rec':
+        return `${styleString(node.val1, '-')}${styleString(node.val2, '+')}`;
+      case 'object':
         return `${indent(depth)}  ${node.key}: {\n${iter(node.children, depth + 1).join('')}${indent(depth)}  }\n`;
       default:
-        throw new Error(`Этого типа не существует: ${node.type}`);
+        throw new Error(`Incorrect type: ${node.type}`);
     }
   });
   return `{\n${iter(innerTree, 1).join('')}}`;

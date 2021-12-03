@@ -1,20 +1,20 @@
 import _ from 'lodash';
 
 const buildTree = (obj1, obj2) => {
-  const commonKeys = Object.keys({ ...obj1, ...obj2 }).sort();
+  const commonKeys = Object.keys({ ...obj1, ...obj2 });
+  const sortedKeys = _.sortBy(commonKeys);
 
-  return commonKeys.map((key) => {
+  return sortedKeys.map((key) => {
     const valueobj1 = obj1[key];
     const valueobj2 = obj2[key];
-
-    if (!_.has(obj1, key)) {
-      return { type: '+', key, val: valueobj2 };
+    if (_.isPlainObject(valueobj1) && _.isPlainObject(valueobj2)) {
+      return { type: 'object', key, children: buildTree(valueobj1, valueobj2) };
     }
     if (!_.has(obj2, key)) {
-      return { type: '-', key, val: valueobj1 };
+      return { type: 'deleted', key, val: valueobj1 };
     }
-    if (_.isPlainObject(valueobj1) && _.isPlainObject(valueobj2)) {
-      return { type: 'rec', key, children: buildTree(valueobj1, valueobj2) };
+    if (!_.has(obj1, key)) {
+      return { type: 'added', key, val: valueobj2 };
     }
     if (!_.isEqual(valueobj1, valueobj2)) {
       return {

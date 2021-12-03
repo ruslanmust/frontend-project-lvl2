@@ -11,14 +11,15 @@ const getFixturePath = (filename) => path.join(__dirname, '..', '__fixtures__', 
 const readFile = (filename) => fs.readFileSync(getFixturePath(filename), 'utf-8');
 
 const cases = [
+  ['file1.json', 'file2.json', 'expected_plain.txt', 'plain'],
   ['file1.yml', 'file2.yml', 'expected_stylish.txt', 'stylish'],
   ['file1.json', 'file2.json', 'expected_stylish.txt', 'stylish'],
 ];
 
 test.each(cases)('Compare %s and %s to expect %s in "%s" style', (firstArg, secondArg, expectedResult, format) => {
-  const firstFile = getFixturePath(firstArg);
-  const secondFile = getFixturePath(secondArg);
-  const getResult = readFile(expectedResult);
-  const result = compare(firstFile, secondFile, format);
-  expect(result).toEqual(getResult);
+  const pathTofile1 = getFixturePath(firstArg);
+  const pathTofile2 = getFixturePath(secondArg);
+  const expected = readFile(expectedResult);
+  const result = compare(pathTofile1, pathTofile2, format);
+  expect(result).toEqual(expected);
 });
