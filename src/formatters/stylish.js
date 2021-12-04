@@ -18,7 +18,7 @@ const stringify = (data, treeDepth) => {
   ].join('\n');
 };
 
-const nested = (innerTree) => {
+const stylish = (innerTree) => {
   const iter = (tree, depth) => tree.map((node) => {
     const styleString = (value, sign) => `${indent(depth)}${sign} ${node.key}: ${stringify(value, depth)}\n`;
     switch (node.type) {
@@ -39,4 +39,4 @@ const nested = (innerTree) => {
   return `{\n${iter(innerTree, 1).join('')}}`;
 };
 
-export default nested;
+export default stylish;

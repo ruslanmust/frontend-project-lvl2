@@ -1,10 +1,10 @@
-import nested from './nested.js';
+import stylish from './stylish.js';
 import plain from './plain.js';
 
 export default (innerTree, formatName) => {
   switch (formatName) {
-    case 'nested':
-      return nested(innerTree);
+    case 'stylish':
+      return stylish(innerTree);
     case 'plain':
       return plain(innerTree);
     case 'json':
