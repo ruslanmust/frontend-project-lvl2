@@ -7,6 +7,8 @@ export default (innerTree, formatName) => {
       return nested(innerTree);
     case 'plain':
       return plain(innerTree);
+    case 'json':
+      return JSON.stringify(innerTree);
     default:
       throw new Error(`Incorrect format: ${formatName}`);
   }
